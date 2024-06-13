@@ -1,7 +1,7 @@
 const express = require('express')
 const path = require('path')
 const app = express()
-const PORT = process.env.PORT || 4000
+const PORT = 3002
 
 const server = app.listen(PORT, () => console.log(`Server started on port ${PORT}`))
 
@@ -20,7 +20,7 @@ function onConnected(socket){
 
   io.emit('clients-total', socketsConected.size)
 
-  socket.on('disconnect', () => {
+  socket.on('disconnect', () => { 
     console.log('Disconnected:', socket.id)
     socketsConected.delete(socket.id)
     io.emit('clients-total', socketsConected.size)
